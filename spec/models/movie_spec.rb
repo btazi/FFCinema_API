@@ -21,6 +21,11 @@ RSpec.describe Movie, type: :model do
   it {is_expected.to validate_numericality_of(:imdb_rating).is_less_than(10).is_greater_than(0).allow_nil}
   it {is_expected.to validate_numericality_of(:runtime).is_greater_than(0).allow_nil}
 
+  it "expects show_times to be an empty array for new movies" do
+    movie = Movie.create(title: "The Dark Knight", imdb_id: "tt0468569/")
+    expect(movie.show_times).to eq([])
+  end
+
   it "updates correcly the attributes from the omdb database" do
     movie = build(:movie, imdb_id: "tt0232500", runtime: nil, release_date: nil, imdb_rating: nil)
     movie.update_from_imdb
