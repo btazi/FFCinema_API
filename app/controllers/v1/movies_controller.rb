@@ -1,6 +1,7 @@
 class V1::MoviesController < ApplicationController
   before_action :get_movie_by_imdb_id, only: [:show, :update]
   before_action :authorize_admins, only: [:update]
+  before_action :authenticate_user!, only: [:rate]
 
   def index
     @movies = Movie.all
@@ -10,7 +11,7 @@ class V1::MoviesController < ApplicationController
   def show
     if @movie
       @movie.update_from_omdb
-      render json: {success: true, movie: @movie}, status: 200
+      render json: {success: true, movie: @movie.to_json}, status: 200
     elsif @movie.nil?
       render json: {success: false, error: "Could not find movie with id #{params[:id]}"}, status: 404
     end

@@ -2,6 +2,8 @@ class User < ApplicationRecord
   acts_as_token_authenticatable
   enum role: [:moviegoer, :admin]
 
+  has_many :reviews
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,

@@ -1,9 +1,10 @@
 class Movie < ApplicationRecord
 
+  has_many :reviews
+
   validates_presence_of :title, :imdb_id
   validates_format_of :imdb_id, :with => /\Att\d{7}\Z/
   validates_uniqueness_of :imdb_id
-  validates :rating, numericality: { greater_than: 0, less_than: 10, allow_nil: true }
   validates :imdb_rating, numericality: { greater_than: 0, less_than: 10, allow_nil: true }
   validates :runtime, numericality: { greater_than: 0 }, allow_nil: true
 
@@ -16,5 +17,9 @@ class Movie < ApplicationRecord
     runtime = json.dig("Runtime")&.gsub(/\D/, '')
     assign_attributes(runtime: runtime, release_date: json["Released"], imdb_rating: json["imdbRating"])
     save
+  end
+
+  def rating
+    reviews.any? ? (reviews.sum(:rating).to_f/reviews.count.to_f).round(2) : nil
   end
 end
