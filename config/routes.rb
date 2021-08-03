@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for :users
+  
+  namespace :v1 do
+    post "sessions", as: "create_session", to: "sessions#create"
+    delete "sessions", as: "delete_session", to: "sessions#destroy"
+    resources :home, only: [:index]
+  end
 end
