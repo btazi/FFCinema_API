@@ -21,10 +21,13 @@ You will be responsible for the first iteration of API which will be used by ano
 - `rails db:create`
 - `rails db:migrate`
 - `rails db:seed` will create the movie db and the test users
-admin user:
+
+
+- admin user:
 email: admin@user.com
 password: password
-moviegoer user:
+
+- moviegoer user:
 email: moviegover@user.com
 password: password
 
