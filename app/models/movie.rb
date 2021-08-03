@@ -6,7 +6,6 @@ class Movie < ApplicationRecord
   validates :rating, numericality: { greater_than: 0, less_than: 10, allow_nil: true }
   validates :imdb_rating, numericality: { greater_than: 0, less_than: 10, allow_nil: true }
   validates :runtime, numericality: { greater_than: 0 }, allow_nil: true
-  validates :show_times, presence: true
 
 
   def update_from_omdb

@@ -7,5 +7,6 @@ FactoryBot.define do
     imdb_rating { 6.8 }
     runtime { 106 }
     price_in_usd { 8.50 }
+    show_times { [] }
   end
 end

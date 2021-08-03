@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   namespace :v1 do
     post "sessions", as: "create_session", to: "sessions#create"
     delete "sessions", as: "delete_session", to: "sessions#destroy"
-    resources :home, only: [:index]
+    resources :movies, only: [:index, :show, :update]
   end
 end
