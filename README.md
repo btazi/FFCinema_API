@@ -17,7 +17,7 @@ You will be responsible for the first iteration of API which will be used by ano
 - Present API documentation leveraging OpenAPI/Swagger 2.0 standard
 
 # Getting Started:
-- bundle install
+- `bundle install`
 - `rails db:create`
 - `rails db:migrate`
 - `rails db:seed` will create the movie db and the test users
