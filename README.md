@@ -22,7 +22,17 @@ You will be responsible for the first iteration of API which will be used by ano
 - `rails db:migrate`
 - `rails db:seed` will create the movie db and the test users
 
+You must also provide your own credentials yml file. 
+- Create it with `rails credentials:edit`. This will generate a new credentials file 
+- Add [the omdb_key from here](http://www.omdbapi.com)
+The file must look like this:
+```
+secret_key_base: your_rails_secret (generated automatically with the credentials file)
+omdb_key: your_omdb_key
+```
 
+## Test Users
+You can use the following login credentials to get started:
 - admin user:
 email: admin@user.com
 password: password
@@ -37,7 +47,8 @@ In order to be logged in you need to include in your headers:
 See [simple token auth](https://github.com/gonzalo-bulnes/simple_token_authentication) for more details.
 
 * Sign in:
-``` 
+```
+The response returns an auth_token that you can use in your X-User-Token header later on.
 POST: /v1/sessions
 parameters:
 - email: String
